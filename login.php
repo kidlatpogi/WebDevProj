@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     ];
 
     if (array_key_exists($email, $validCredentials) && $validCredentials[$email] === $password) {
-        echo "Login Successful";  // simple success message
+        echo "Login Successful";
     } else {
         echo "Invalid email or password.";
     }
