@@ -1,6 +1,5 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    // Get and sanitize user input
     $email = trim($_POST["username"]);
     $password = trim($_POST["pswd"]);
 
@@ -9,18 +8,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         exit;
     }
 
-    // Define valid email-password pairs
     $validCredentials = [
         "sarapmoFrancis@example.com" => "123",
         "drinolokoy@pepengMatambok.com" => "Louie123",
         "cigaretteAfterRex@hampaskosayoraketako.com" => "Mateo",
         "kidlatBilat@angsarapnicis.com" => "Kidlat",
-        "kentotpakantot@example.com" => "kantotEverySaturday" // <- Please avoid inappropriate domains
+        "kentotpakantot@example.com" => "kantotEverySaturday"
     ];
 
-    // Check if credentials are valid
     if (array_key_exists($email, $validCredentials) && $validCredentials[$email] === $password) {
-        echo htmlspecialchars($email) . " Login successful!";
+        echo "Login Successful";  // simple success message
     } else {
         echo "Invalid email or password.";
     }
