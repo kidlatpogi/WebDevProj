@@ -1,22 +1,24 @@
 <?php
-// login.php
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email = trim($_POST["username"]);
     $password = trim($_POST["pswd"]);
 
-    // Check if fields are filled
     if (empty($email) || empty($password)) {
         die("Please fill in all login fields.");
     }
 
-    // Hardcoded valid credentials
-    $validEmail = "sarapmoFrancis@example.com";
-    $validPassword = "123";
+    // Fixed missing commas in the array
+    $validCredentials = [
+        "sarapmoFrancis@example.com" => "123",
+        "drinolokoy@pepengMatambok.com" => "Louie123",
+        "cigaretteAfterRex@hampaskosayoraketako.com" => "Mateo",
+        "kidlatBilat@angsarapnicis.com" => "Kidlat",
+        "kentotpakantot@ihateniggers.com" => "kantotEverySaturday"
+    ];
 
-    if ($email === $validEmail && $password === $validPassword) {
-        echo "Login successful!";
-        // In real case: Start session, redirect, etc.
+    if (array_key_exists($email, $validCredentials) && $validCredentials[$email] === $password) {
+        echo htmlspecialchars($email) . " Login successful!";
     } else {
         echo "Invalid email or password.";
     }
