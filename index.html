@@ -46,24 +46,25 @@
     </div>
 
     <script>
-        document.getElementById("loginForm").addEventListener("submit", function(e) {
-            e.preventDefault();
+document.getElementById("loginForm").addEventListener("submit", function(e) {
+    e.preventDefault(); // ⛔ Stop the default form POST
 
-            const formData = new FormData(this);
+    const formData = new FormData(this);
 
-            fetch("login.php", {
-                method: "POST",
-                body: formData
-            })
-            .then(response => response.text())
-            .then(data => {
-                alert(data); // ✅ This pops up the message
-            })
-            .catch(error => {
-                alert("Error: " + error); // ✅ Show errors with alert too
-            });
-        });
-    </script>
+    fetch("login.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.text())
+    .then(data => {
+        alert(data); // ✅ Show result in a popup
+    })
+    .catch(error => {
+        alert("Error: " + error);
+    });
+});
+</script>
+
 
 </body>
 
