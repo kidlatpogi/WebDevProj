@@ -49,19 +49,27 @@
     document.getElementById("loginForm").addEventListener("submit", function(e) {
         e.preventDefault();
     
-        const formData = new FormData(this);
+        const validCredentials = {
+            "sarapmoFrancis@example.com": "123",
+            "drinolokoy@pepengMatambok.com": "Louie123",
+            "cigaretteAfterRex@hampaskosayoraketako.com": "Mateo",
+            "kidlatBilat@angsarapnicis.com": "Kidlat",
+            "kentotpakantot@example.com": "kantotEverySaturday"
+        };
     
-        fetch("login.php", {
-            method: "POST",
-            body: formData
-        })
-        .then(response => response.text())
-        .then(data => {
-            alert(data);
-        })
-        .catch(error => {
-            alert("Error: " + error);
-        });
+        const username = this.username.value.trim();
+        const password = this.pswd.value;
+    
+        if (!username || !password) {
+            alert("Please fill in all login fields.");
+            return;
+        }
+    
+        if (validCredentials[username] && validCredentials[username] === password) {
+            alert(`Login Successful! Welcome, ${username}`);
+        } else {
+            alert("Invalid email or password.");
+        }
     });
 </script>
 
