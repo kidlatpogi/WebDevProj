@@ -45,8 +45,6 @@
         </div>
     </div>
 
-    <div id="message" style="text-align:center; margin-top: 20px; font-weight: bold;"></div>
-
     <script>
         document.getElementById("loginForm").addEventListener("submit", function(e) {
             e.preventDefault();
@@ -59,10 +57,10 @@
             })
             .then(response => response.text())
             .then(data => {
-                document.getElementById("message").textContent = data;
+                alert(data); // ✅ This pops up the message
             })
             .catch(error => {
-                document.getElementById("message").textContent = "Error: " + error;
+                alert("Error: " + error); // ✅ Show errors with alert too
             });
         });
     </script>
